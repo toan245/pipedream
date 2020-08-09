@@ -1,0 +1,56 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/BaiTapLon.master" AutoEventWireup="true" CodeFile="DSKhachHang.aspx.cs" Inherits="DSKhachHang" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="MenuRight">
+        <h2>ADMIN</h2>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="MaKhach">
+            <Columns>
+                <asp:BoundField DataField="MaKhach" HeaderText="STT" InsertVisible="False" ReadOnly="True" SortExpression="MaKhach" />
+                <asp:BoundField DataField="TenKH" HeaderText="Tên Khách Hàng" SortExpression="TenKH" />
+                <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+                <asp:BoundField DataField="MatKhau" HeaderText="Mật Khẩu" SortExpression="MatKhau" />
+                <asp:BoundField DataField="DiaChi" HeaderText="Địa chỉ" SortExpression="DiaChi" />
+                <asp:BoundField DataField="SDT" HeaderText="SĐT" SortExpression="SDT" />
+                <asp:BoundField DataField="Quyen" HeaderText="Quyền" SortExpression="Quyen" />
+                <asp:CommandField DeleteText="Xoá" ShowDeleteButton="True" />
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:DSKHConnectionString %>" DeleteCommand="DELETE FROM [Khach] WHERE [MaKhach] = @original_MaKhach AND (([TenKH] = @original_TenKH) OR ([TenKH] IS NULL AND @original_TenKH IS NULL)) AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND (([MatKhau] = @original_MatKhau) OR ([MatKhau] IS NULL AND @original_MatKhau IS NULL)) AND (([DiaChi] = @original_DiaChi) OR ([DiaChi] IS NULL AND @original_DiaChi IS NULL)) AND (([SDT] = @original_SDT) OR ([SDT] IS NULL AND @original_SDT IS NULL)) AND (([Quyen] = @original_Quyen) OR ([Quyen] IS NULL AND @original_Quyen IS NULL))" InsertCommand="INSERT INTO [Khach] ([TenKH], [Email], [MatKhau], [DiaChi], [SDT], [Quyen]) VALUES (@TenKH, @Email, @MatKhau, @DiaChi, @SDT, @Quyen)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT * FROM [Khach]" UpdateCommand="UPDATE [Khach] SET [TenKH] = @TenKH, [Email] = @Email, [MatKhau] = @MatKhau, [DiaChi] = @DiaChi, [SDT] = @SDT, [Quyen] = @Quyen WHERE [MaKhach] = @original_MaKhach AND (([TenKH] = @original_TenKH) OR ([TenKH] IS NULL AND @original_TenKH IS NULL)) AND (([Email] = @original_Email) OR ([Email] IS NULL AND @original_Email IS NULL)) AND (([MatKhau] = @original_MatKhau) OR ([MatKhau] IS NULL AND @original_MatKhau IS NULL)) AND (([DiaChi] = @original_DiaChi) OR ([DiaChi] IS NULL AND @original_DiaChi IS NULL)) AND (([SDT] = @original_SDT) OR ([SDT] IS NULL AND @original_SDT IS NULL)) AND (([Quyen] = @original_Quyen) OR ([Quyen] IS NULL AND @original_Quyen IS NULL))">
+            <DeleteParameters>
+                <asp:Parameter Name="original_MaKhach" Type="Int32" />
+                <asp:Parameter Name="original_TenKH" Type="String" />
+                <asp:Parameter Name="original_Email" Type="String" />
+                <asp:Parameter Name="original_MatKhau" Type="String" />
+                <asp:Parameter Name="original_DiaChi" Type="String" />
+                <asp:Parameter Name="original_SDT" Type="String" />
+                <asp:Parameter Name="original_Quyen" Type="String" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="TenKH" Type="String" />
+                <asp:Parameter Name="Email" Type="String" />
+                <asp:Parameter Name="MatKhau" Type="String" />
+                <asp:Parameter Name="DiaChi" Type="String" />
+                <asp:Parameter Name="SDT" Type="String" />
+                <asp:Parameter Name="Quyen" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="TenKH" Type="String" />
+                <asp:Parameter Name="Email" Type="String" />
+                <asp:Parameter Name="MatKhau" Type="String" />
+                <asp:Parameter Name="DiaChi" Type="String" />
+                <asp:Parameter Name="SDT" Type="String" />
+                <asp:Parameter Name="Quyen" Type="String" />
+                <asp:Parameter Name="original_MaKhach" Type="Int32" />
+                <asp:Parameter Name="original_TenKH" Type="String" />
+                <asp:Parameter Name="original_Email" Type="String" />
+                <asp:Parameter Name="original_MatKhau" Type="String" />
+                <asp:Parameter Name="original_DiaChi" Type="String" />
+                <asp:Parameter Name="original_SDT" Type="String" />
+                <asp:Parameter Name="original_Quyen" Type="String" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+    </div>
+</asp:Content>
+
